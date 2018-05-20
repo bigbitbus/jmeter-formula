@@ -1,0 +1,33 @@
+{% set install_jmeter = salt['grains.filter_by']({
+    'Debian': {
+        'package': ['default-jdk']
+    },
+    'RedHat': {
+        'package': ['java-1.8.0-openjdk-devel'
+    },    ]
+    'common': {
+        'jmeter_source_url':  "http://muug.ca/mirror/apache-dist//jmeter/binaries/apache-jmeter-4.0.tgz"
+        'install_dir': "/opt/"
+    }
+
+}, grain='os_family', merge=salt['pillar.get']('jmeter:install:lookup'), default='Debian', base='common')%}
+
+{% set exec_jmeter = salt['grains.filter_by']({
+    'Debian': {
+    },
+    'RedHat': {
+    },    
+    'common': {
+        'cmd_cli_args': '-n ',
+        'out_dir' : '/tmp/outputdata/jmeter',
+        'jmx_template_file': 'simpletest.jmx.tmpl', #Location will be in the files/ subfolder, served via salt
+        'num_loops': 1,
+        'num_threads': 1,
+        'db_host': 'dbhost.example.com',
+        'db_name': 'employees',
+        'db_password': 'password',
+        'db_username': 'root'
+    }
+
+}, grain='os_family', merge=salt['pillar.get']('jmeter:execute:lookup'), default='Debian', base='common')%}
+
