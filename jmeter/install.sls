@@ -6,7 +6,7 @@
 
 install_prereqs:
   pkg.latest:
-    - pkgs: {{ prereqs }}
+    - pkgs: {{ prereq_packages }}
 
 install_from_url:
   cmd.run:
@@ -14,11 +14,11 @@ install_from_url:
       - rm -rf jmeter*
       - wget {{ jmeter_source_url }} -O jmeter.tar.gz
       - mkdir -p {{ install_dir }}
-      - tar -xvzf jmeter.tar.gz -o {{ install_dir }}
-      - mv {{ install_dir }}/apache-jmeter*/ {{ install_dir }}/jmeter/
+      - tar -xvzf jmeter.tar.gz -C {{ install_dir }}
+      - mv {{ install_dir }}apache-jmeter*/ {{ install_dir }}jmeter/
       - wget {{ mysql_jdbc_plugin_url }} -O jdbc.tar.gz
       - tar -xvzf jdbc.tar.gz
-      - mv mysql-connector*/*.jar {{ install_dir}}/jmeter/lib
+      - mv mysql-connector*/*.jar {{ install_dir}}jmeter/lib
       - rm -rf mysql-connector*/
       - rm -rf *.tar.gz
     - cwd: /tmp

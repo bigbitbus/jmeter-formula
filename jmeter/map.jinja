@@ -1,13 +1,14 @@
 {% set install_jmeter = salt['grains.filter_by']({
     'Debian': {
-        'package': ['default-jdk']
+        'prereq_packages': ['default-jdk']
     },
     'RedHat': {
-        'package': ['java-1.8.0-openjdk-devel'
-    },    ]
+        'prereq_packages': ['java-1.8.0-openjdk-devel']
+    },    
     'common': {
-        'jmeter_source_url':  "http://muug.ca/mirror/apache-dist//jmeter/binaries/apache-jmeter-4.0.tgz"
-        'install_dir': "/opt/"
+        'jmeter_source_url':  "http://muug.ca/mirror/apache-dist//jmeter/binaries/apache-jmeter-4.0.tgz",
+        'install_dir': "/opt/",
+        'mysql_jdbc_plugin_url': "https://nova-qc.dair-atir.canarie.ca:8080/v1/AUTH_20e720ec077e4a1ea6e2a9c7e7200b10/binaries/mysql-connector-java-8.0.11.tar.gz"
     }
 
 }, grain='os_family', merge=salt['pillar.get']('jmeter:install:lookup'), default='Debian', base='common')%}
@@ -20,7 +21,7 @@
     'common': {
         'cmd_cli_args': '-n ',
         'out_dir' : '/tmp/outputdata/jmeter',
-        'jmx_template_file': 'simpletest.jmx.tmpl', #Location will be in the files/ subfolder, served via salt
+        'jmx_template_file': 'simpletest.jmx.tmpl',
         'num_loops': 1,
         'num_threads': 1,
         'db_host': 'dbhost.example.com',
