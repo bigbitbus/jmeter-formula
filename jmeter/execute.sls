@@ -36,7 +36,7 @@ run_jmeter_test:
   cmd.run:
     - names:
       - date
-      - {{ install_dir }}jmeter/bin/jmeter {{ cli_args }} -t {{ out_dir }}/test.jmx
+      - {{ install_dir }}jmeter/bin/jmeter {{ cli_args }} -t {{ out_dir }}/test.jmx  -l {{ out_dir }}/results.jtl
     - cwd: {{ out_dir }}
 
     
