@@ -1,16 +1,15 @@
 {% from "jmeter/map.jinja" import exec_jmeter as exec_jmeter_map with context %}
 {% set cli_args = exec_jmeter_map.get ('cmd_cli_args','') %}
-{% set jmx_template_file = exec_jmeter_map.get ('jmx_template_file',[]) %}
+{% set jmx_template_file = exec_jmeter_map.get ('jmx_template_file','') %}
 {% set out_dir = exec_jmeter_map.get('out_dir','/tmp/outputdata/jmeter') %}
 {% set num_loops = exec_jmeter_map.get('num_loops',1) %}
 {% set num_threads = exec_jmeter_map.get('num_threads',1) %}
-{% set db_host = exec_jmeter_map.get('db_host') %}
-{% set db_port = exec_jmeter_map.get('db_port') %}
-{% set db_name = exec_jmeter_map.get('db_name','employees') %}
-{% set db_password = exec_jmeter_map.get('db_password') %}
-{% set db_username = exec_jmeter_map.get('db_username') %}
+{% set db_host = salt['pillar.get']('dbconnection:db_host','172.17.0.2') %}
+{% set db_port = salt['pillar.get']('dbconnection:db_port','3306') %}
+{% set db_name = salt['pillar.get']('dbconnection:db_name','employees') %}
+{% set db_name = salt['pillar.get']('dbconnection:db_username','root') %}
+{% set db_name = salt['pillar.get']('dbconnection:db_password','password') %}
 {% set id = grains.get('id','no_minion_id') %}
-
 {% from "jmeter/map.jinja" import install_jmeter as install_jmeter_map with context %}
 {% set install_dir = install_jmeter_map.get('install_dir', '/opt') %}
 
