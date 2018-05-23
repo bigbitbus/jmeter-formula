@@ -7,8 +7,8 @@
 {% set db_host = salt['pillar.get']('dbconnection:db_host','172.17.0.2') %}
 {% set db_port = salt['pillar.get']('dbconnection:db_port','3306') %}
 {% set db_name = salt['pillar.get']('dbconnection:db_name','employees') %}
-{% set db_name = salt['pillar.get']('dbconnection:db_username','root') %}
-{% set db_name = salt['pillar.get']('dbconnection:db_password','password') %}
+{% set db_username = salt['pillar.get']('dbconnection:db_username','root') %}
+{% set db_pasword = salt['pillar.get']('dbconnection:db_password','password') %}
 {% set id = grains.get('id','no_minion_id') %}
 {% from "jmeter/map.jinja" import install_jmeter as install_jmeter_map with context %}
 {% set install_dir = install_jmeter_map.get('install_dir', '/opt') %}
