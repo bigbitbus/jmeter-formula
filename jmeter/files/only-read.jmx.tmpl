@@ -121,7 +121,7 @@
               <connectTime>true</connectTime>
             </value>
           </objProp>
-          <stringProp name="filename">/tmp/outputdata/jmeter/summarydata.csv</stringProp>
+         <stringProp name="filename">{{out_dir}}/{{ jmeterhost_id }}-query_reports.${__time(yyyy-MM-dd&apos;T&apos;hh_mm_ssZ)}.csv</stringProp>
         </ResultCollector>
         <hashTree/>
       </hashTree>
