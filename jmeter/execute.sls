@@ -9,6 +9,7 @@
 {% set db_name = salt['pillar.get']('dbconnection:db_name','employees') %}
 {% set db_username = salt['pillar.get']('dbconnection:db_username','root') %}
 {% set db_pasword = salt['pillar.get']('dbconnection:db_password','password') %}
+{% set jmx_config = salt['pillar.get']('jmx_config', {}) %}
 {% set id = grains.get('id','no_minion_id') %}
 {% from "jmeter/map.jinja" import install_jmeter as install_jmeter_map with context %}
 {% set install_dir = install_jmeter_map.get('install_dir', '/opt') %}
@@ -16,19 +17,18 @@
 prepare_jmx_file:
   file.managed:
     - name: {{ out_dir }}/test.jmx
-    - source: salt://jmeter/files/{{ jmx_template_file }}
+    - source: salt://jmeter/files/{{ jmx_config.jmx_template_file }}
     - template: jinja
     - context:
         jmeterhost_id: {{ id }}
         install_dir: {{ install_dir }}
         out_dir: {{ out_dir }}
-        num_loops: {{ num_loops }}
-        num_threads: {{ num_threads }}
         db_host: {{ db_host }}
         db_port: {{ db_port }}
         db_name: {{ db_name }}
         db_password: {{ db_password }}
         db_username: {{ db_username }}
+        jc: {{ jmx_config }}
     - makedirs: True
 
 run_jmeter_test:

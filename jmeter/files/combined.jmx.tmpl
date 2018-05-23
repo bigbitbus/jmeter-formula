@@ -18,10 +18,10 @@
           <boolProp name="LoopController.continue_forever">false</boolProp>
           <intProp name="LoopController.loops">-1</intProp>
         </elementProp>
-        <stringProp name="ThreadGroup.num_threads">{{ num_threads_writers }}</stringProp>
+        <stringProp name="ThreadGroup.num_threads">{{ jc.num_threads_writers }}</stringProp>
         <stringProp name="ThreadGroup.ramp_time">10</stringProp>
         <boolProp name="ThreadGroup.scheduler">true</boolProp>
-        <stringProp name="ThreadGroup.duration">{{ writers_duration }}</stringProp>
+        <stringProp name="ThreadGroup.duration">{{ jc.writers_duration }}</stringProp>
         <stringProp name="ThreadGroup.delay"></stringProp>
       </ThreadGroup>
       <hashTree>
@@ -34,7 +34,7 @@
           <stringProp name="driver">com.mysql.jdbc.Driver</stringProp>
           <boolProp name="keepAlive">true</boolProp>
           <stringProp name="password">{{ db_password }}</stringProp>
-          <stringProp name="poolMax">{{ num_threads_writers }}</stringProp>
+          <stringProp name="poolMax">{{ jc.num_threads_writers }}</stringProp>
           <stringProp name="timeout">10000</stringProp>
           <stringProp name="transactionIsolation">DEFAULT</stringProp>
           <stringProp name="trimInterval">60000</stringProp>
@@ -255,10 +255,10 @@ STR_TO_DATE(&apos;${to_date_2}&apos;,&apos;%Y-%m-%d&apos;))
           <boolProp name="LoopController.continue_forever">false</boolProp>
           <intProp name="LoopController.loops">-1</intProp>
         </elementProp>
-        <stringProp name="ThreadGroup.num_threads">{{ num_threads_readers }}</stringProp>
+        <stringProp name="ThreadGroup.num_threads">{{ jc.num_threads_readers }}</stringProp>
         <stringProp name="ThreadGroup.ramp_time">10</stringProp>
         <boolProp name="ThreadGroup.scheduler">true</boolProp>
-        <stringProp name="ThreadGroup.duration">{{ readers_duration }}</stringProp>
+        <stringProp name="ThreadGroup.duration">{{ jc.readers_duration }}</stringProp>
         <stringProp name="ThreadGroup.delay"></stringProp>
       </ThreadGroup>
       <hashTree>
@@ -271,7 +271,7 @@ STR_TO_DATE(&apos;${to_date_2}&apos;,&apos;%Y-%m-%d&apos;))
           <stringProp name="driver">com.mysql.jdbc.Driver</stringProp>
           <boolProp name="keepAlive">true</boolProp>
           <stringProp name="password">{{ db_password }}</stringProp>
-          <stringProp name="poolMax">{{ num_threads_readers }}</stringProp>
+          <stringProp name="poolMax">{{ jc.num_threads_readers }}</stringProp>
           <stringProp name="timeout">10000</stringProp>
           <stringProp name="transactionIsolation">DEFAULT</stringProp>
           <stringProp name="trimInterval">60000</stringProp>
