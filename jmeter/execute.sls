@@ -17,7 +17,7 @@ clean_out_dir:
   cmd.run:
     - names: 
       - mkdir -p {{ out_dir }}
-      - touch {{ outdir }}/dummyfile
+      - touch {{ out_dir }}/dummyfile 
       - rm -rf {{ out_dir }}/*
 
 prepare_jmx_file:
