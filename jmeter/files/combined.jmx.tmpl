@@ -38,7 +38,7 @@
           <stringProp name="timeout">10000</stringProp>
           <stringProp name="transactionIsolation">DEFAULT</stringProp>
           <stringProp name="trimInterval">60000</stringProp>
-          <stringProp name="username">root</stringProp>
+          <stringProp name="username">{{ db_username }}</stringProp>
         </JDBCDataSource>
         <hashTree/>
         <JDBCSampler guiclass="TestBeanGUI" testclass="JDBCSampler" testname="Get 2 random employees" enabled="true">
@@ -275,7 +275,7 @@ STR_TO_DATE(&apos;${to_date_2}&apos;,&apos;%Y-%m-%d&apos;))
           <stringProp name="timeout">10000</stringProp>
           <stringProp name="transactionIsolation">DEFAULT</stringProp>
           <stringProp name="trimInterval">60000</stringProp>
-          <stringProp name="username">root</stringProp>
+          <stringProp name="username">{{ db_username }}</stringProp>
         </JDBCDataSource>
         <hashTree/>
         <JDBCSampler guiclass="TestBeanGUI" testclass="JDBCSampler" testname="Find matching " enabled="true">
