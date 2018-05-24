@@ -15,7 +15,7 @@
 {% set install_dir = install_jmeter_map.get('install_dir', '/opt') %}
 clean_out_dir:
   cmd.run:
-    names: 
+    - names: 
       - mkdir -p {{ out_dir }}
       - rm {{ out_dir }}/*
 
