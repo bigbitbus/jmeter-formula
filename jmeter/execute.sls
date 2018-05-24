@@ -35,7 +35,8 @@ prepare_jmx_file:
         db_username: {{ db_username }}
         jc: {{ jmx_config }}
     - makedirs: True
-    - require: clean_out_dir
+    - require: 
+      - clean_out_dir
 
 {% if (db_host != "NONE") %}
 run_jmeter_test:
@@ -44,6 +45,7 @@ run_jmeter_test:
       - date
       - {{ install_dir }}jmeter/bin/jmeter {{ cli_args }} -t {{ out_dir }}/test.jmx  -l {{ out_dir }}/results.jtl
     - cwd: {{ out_dir }}
-    - require: prepare_jmx_file
+    - require: 
+      - prepare_jmx_file
 {% endif %}
     
