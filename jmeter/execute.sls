@@ -16,8 +16,8 @@
 clean_out_dir:
   cmd.run:
     names: 
-      - mkdir -p {{ outdir }}
-      - rm {{ outdir }}/*
+      - mkdir -p {{ out_dir }}
+      - rm {{ out_dir }}/*
 
 prepare_jmx_file:
   file.managed:
