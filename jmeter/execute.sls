@@ -31,6 +31,7 @@ prepare_jmx_file:
         jc: {{ jmx_config }}
     - makedirs: True
 
+{% if (db_host != "NONE" %}
 run_jmeter_test:
   cmd.run:
     - names:
@@ -38,4 +39,5 @@ run_jmeter_test:
       - {{ install_dir }}jmeter/bin/jmeter {{ cli_args }} -t {{ out_dir }}/test.jmx  -l {{ out_dir }}/results.jtl
     - cwd: {{ out_dir }}
 
+{% endif %}
     
