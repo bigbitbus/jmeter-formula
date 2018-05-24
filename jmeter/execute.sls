@@ -31,7 +31,7 @@ prepare_jmx_file:
         jc: {{ jmx_config }}
     - makedirs: True
 
-{% if (db_host != "NONE" %}
+{% if (db_host != "NONE") %}
 run_jmeter_test:
   cmd.run:
     - names:
